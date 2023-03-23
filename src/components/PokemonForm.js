@@ -13,11 +13,16 @@ export default class PokemonForm extends Component {
 
 
     handelSubmit = e => {
-       
-         e.preventDefault();
+      e.preventDefault();
+      
+
+      if (this.state.pokemonName.trim() === '') {
+        alert('введіть назву')
+        return;
+      }
 
        this.props.onSubmit(this.state.pokemonName);
-    this.setState({ pokemonName: '' });
+        this.setState({ pokemonName: '' });
     }
 
 
@@ -26,7 +31,7 @@ export default class PokemonForm extends Component {
 
     render() {
     return (
-      <form onSubmit={this.handleSubmit} >
+      <form onSubmit={this.handelSubmit} >
         <input
           type="text"
           name="pokemonName"
